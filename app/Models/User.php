@@ -18,9 +18,23 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'titulo',
+        'nombre',
+        'nombre_p_mostrar',
+        'curp',
+        'ced_pro',
+        'tit_pro',
+        'departamento',
+        'depto',
+        'siglas',
+        'puesto',
+        'clave',
+        'activo',
+        'cambiar_passw',
+        'contrasenia',
+        'tipo',
+        'centro',
+        'ultima_permanencia'
     ];
 
     /**
@@ -29,16 +43,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'contrasenia',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function getInitialsAttribute()
+    {
+        $tokens = explode(" ", $this->nombre_p_mostrar);
+        $initials =  $tokens[0][0];
+        if (count($tokens) > 1) {
+            $initials = $initials . $tokens[1][0];
+        }
+        return $initials;
+    }
 }

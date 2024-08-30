@@ -13,12 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('auth.login');
+// Route::resource('tickets', TicketController::class)->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::view('/', 'home')->name('home');
+    Route::resource('tickets', TicketController::class);
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('tickets', TicketController::class)->middleware('auth');
