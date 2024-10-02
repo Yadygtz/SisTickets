@@ -9,16 +9,19 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css"> --}}
+    <link id="pagestyle" href="{{ asset('assets/css/datatables.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/tabler-ui.css') }}" rel="stylesheet">
+    <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
 </head>
 <body>
     <div id="app">
@@ -82,5 +85,14 @@
             @yield('content')
         </main>
     </div>
+     <!-- Scripts -->
+     <script src="{{ asset('js/jquery.js') }}"></script>
+     <script src="{{ asset('js/app.js') }}" defer></script>
+     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.all.min.js"></script> --}}
+
+     <script src="{{ asset('js/datatables.js') }}"></script>
+     <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+
+    @stack('scripts')
 </body>
 </html>

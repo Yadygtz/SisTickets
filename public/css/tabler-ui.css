@@ -15529,8 +15529,8 @@ body[data-bs-theme=dark] .navbar[data-bs-theme=light] {
 :root,
 :host,
 [data-bs-theme=light] {
-  --tblr-primary: #0054a6;
-  --tblr-primary-rgb: 0, 84, 166;
+  --tblr-primary: #ab0033;
+  --tblr-primary-rgb: 107, 2, 33;
   --tblr-primary-fg: var(--tblr-light);
   --tblr-primary-darken: #004c95;
   --tblr-primary-lt: #e6eef6;

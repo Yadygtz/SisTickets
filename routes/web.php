@@ -17,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::view('/', 'home')->name('home');
     Route::resource('tickets', TicketController::class);
+    Route::get('/getdata', [TicketController::class, 'getdata'])->name('getdata');
 });

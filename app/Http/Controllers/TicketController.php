@@ -9,8 +9,15 @@ class TicketController extends Controller
 {
     public function index()
     {
-        $tickets = Ticket::all();
-        return view('tickets.index', compact('tickets'));
+
+        return view('tickets.index');
+
+    }
+
+    public function getdata()
+    {
+        $data = Ticket::all();
+        return response()->json($data);
     }
 
     public function create()
