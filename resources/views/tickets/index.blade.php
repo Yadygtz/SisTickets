@@ -6,23 +6,24 @@
         <h1>Tickets</h1>
         <a href="{{ route('tickets.create') }}" class="btn btn-primary">Crear Ticket</a>
     </div>
-    <div class="card-body px-0">
-        <div class="table-responsive p-0">
-            <table class="table align items-center pb-0 mt-1" id="DStabla">
-                <thead>
-                    <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Título</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Descripción</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Estado</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
-                        {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th> --}}
-                    </tr>
-                </thead>
-            </table>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive p-0">
+                <table class="table align items-center pb-0 mt-1" id="DStabla">
+                    <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Título</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Descripción</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Estado</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                            {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th> --}}
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
-
 </div>
 @endsection
 
@@ -35,7 +36,7 @@
                 "infoFiltered": "<span class='text-sm text-secondary opacity-9'>(filtrado de _MAX_ registros en total)</span>",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "<span class='ps-4'> _MENU_ registros por página</span>",
+                "lengthMenu": "<span> _MENU_ registros por página</span>",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
                 "search": "Buscar:",

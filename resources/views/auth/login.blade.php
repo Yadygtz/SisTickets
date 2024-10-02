@@ -59,7 +59,7 @@
                                 <div data-mdb-input-init class="form-floating form-outline mb-4">
                                     <input type="text" class="form-control form-control-lg" name="clave" id="clave"
                                         placeholder="" value="" aria-label="clave"
-                                        aria-describedby="clave-addon">
+                                        aria-describedby="clave-addon" autofocus>
                                     @error('clave')
                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                     @enderror
@@ -68,7 +68,7 @@
 
                                 <div data-mdb-input-init class="form-floating form-outline mb-4">
                                     <input type="password" class="form-control form-control-lg" name="password"
-                                        id="password" placeholder="" value="secret" aria-label="Password"
+                                        id="password" placeholder="" aria-label="Password"
                                         aria-describedby="password-addon">
                                     @error('password')
                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
