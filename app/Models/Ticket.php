@@ -14,6 +14,14 @@ class Ticket extends Model
         'title',
         'description',
         'status',
-        'user_id'
+        'user_id',
+        'id_personal',
+        'id_servicio',
+        'id_area',
+        'fecha_registro',
+        'fecha_aprox',
+        'fecha_termino',
+        'estatus',
+        'prioridad'
     ];
 }

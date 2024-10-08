@@ -3,15 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\Area;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class TicketController extends Controller
 {
     public function index()
     {
-
         return view('tickets.index');
+    }
 
+    public function getAreas()
+    {
+        $areasCB = Area::all();
+        return view('tickets.create',compact('areasCB'));
+        //return response()->json($areasCB);
     }
 
     public function getdata()
@@ -40,6 +48,14 @@ class TicketController extends Controller
             'description' => $request->description,
             'status' => $request->status,
             'user_id' => auth()->user()->id,
+            'id_personal'=>$request->id_personal,
+            'id_servicio'=>$request->id_servicio,
+            'id_area'=>$request->id_area,
+            'fecha_registro'=>$request->fecha_registro,
+            'fecha_aprox'=>$request->fecha_aprox,
+            'fecha_termino'=>$request->fecha_termino,
+            'estatus'=>$request->estatus,
+            'prioridad'=>$request->prioridad
         ]);
 
         // Redirigir con un mensaje de éxito

@@ -18,4 +18,5 @@ Route::middleware('auth')->group(function () {
     Route::view('/', 'home')->name('home');
     Route::resource('tickets', TicketController::class);
     Route::get('/getdata', [TicketController::class, 'getdata'])->name('getdata');
+    Route::get('/getAreas', [TicketController::class, 'getAreas'])->name('getAreas');
 });
