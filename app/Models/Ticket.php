@@ -13,7 +13,6 @@ class Ticket extends Model
     protected $fillable = [
         'title',
         'description',
-        'status',
         'user_id',
         'id_personal',
         'id_servicio',
@@ -22,6 +21,8 @@ class Ticket extends Model
         'fecha_aprox',
         'fecha_termino',
         'estatus',
-        'prioridad'
+        'prioridad',
+        'solicita',
+        'origen'
     ];
 }

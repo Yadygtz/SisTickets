@@ -92,7 +92,7 @@
 
      <script src="{{ asset('js/datatables.js') }}"></script>
      <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
-
+     <script src="{{ asset('js/sweetalert.js') }}"></script>
     @stack('scripts')
 </body>
 </html>

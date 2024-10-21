@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Servicio extends Model
 {
     use HasFactory;
-
-    protected $primaryKey = 'id_area';
+    protected $table = 'servicio';
+    protected $primaryKey = 'id_servicio';
 
     protected $fillable = [
+        'id_servicio',
         'servicio',
     ];
 }
