@@ -17,10 +17,9 @@ class AddColumnToTickets extends Migration
             $table->integer('id_personal');
             $table->integer('id_servicio');
             $table->integer('id_area');
-            $table->timestamp('fecha_registro');
-            $table->timestamp('fecha_aprox');
-            $table->timestamp('fecha_termino');
-            $table->string('estatus');
+            $table->date('fecha_registro');
+            $table->date('fecha_aprox');
+            $table->date('fecha_termino');
             $table->string('prioridad');
 
             //
@@ -43,7 +42,6 @@ class AddColumnToTickets extends Migration
                 'fecha_registro',
                 'fecha_aprox',
                 'fecha_termino',
-                'estatus',
                 'prioridad'
             ]));
 
