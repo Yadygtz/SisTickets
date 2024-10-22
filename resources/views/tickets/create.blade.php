@@ -153,17 +153,17 @@
                 $("#pdf_tarjeta").addClass('disabled');
 
             } else {
+                var titulo = $("#title").val().replace(/\//g, '-');
                 $.ajax({
-                    url: '/get_tarjeta/' + $("#title").val(),
+                    url: "{{ route('get_tarjeta', ':id') }}".replace(':id', titulo),
                     method: 'GET',
                     success: function(data) {
 
                         if (data.existe == "SI") {
                             $("#fecha_registro").val(data.fecha_oficio);
                             $("#pdf_tarjeta").removeClass('disabled');
-                            $("#pdf_tarjeta").attr("href", "veroficio/" + $("#title").val().replace(/\//g,
-                                '-'));
-                        } else {
+                            $("#pdf_tarjeta").attr("href", "{{ route('veroficio', ':id') }}".replace(':id', titulo));
+                            } else {
                             $("#pdf_tarjeta").addClass('disabled');
                         }
                     }
