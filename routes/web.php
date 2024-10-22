@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
@@ -43,4 +44,5 @@ Route::middleware('auth')->group(function () {
     })->name('veroficio');
 
 
+    Route::resource('users', UsuariosController::class);
 });
