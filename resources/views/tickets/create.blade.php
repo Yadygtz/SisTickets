@@ -87,8 +87,8 @@
                             <div class="col-md-6">
                                 <label for="asignado" class="form-label">Quien atiende</label>
                                 <select class="form-select" id="id_personal" name="id_personal">
-                                    @foreach ($personalCB as $personal)
-                                        <option value="{{ $personal->id }}">{{ $personal->nombre_p_mostrar }}</option>
+                                    @foreach ($usuarioCB as $usuario)
+                                        <option value="{{ $usuario->id }}">{{ $usuario->nombre_p_mostrar }}</option>
                                     @endforeach
                                 </select>
                             </div>

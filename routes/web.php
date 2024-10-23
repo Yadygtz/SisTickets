@@ -44,5 +44,5 @@ Route::middleware('auth')->group(function () {
     })->name('veroficio');
 
 
-    Route::resource('users', UsuariosController::class);
+    Route::resource('usuarios', UsuariosController::class);
 });

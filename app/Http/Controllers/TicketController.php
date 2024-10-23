@@ -6,6 +6,7 @@ use App\Models\Ticket;
 use App\Models\Area;
 use App\Models\Personal;
 use App\Models\Servicio;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -22,8 +23,8 @@ class TicketController extends Controller
     public function getdata()
     {
         //$data = Ticket::all();
-        $data = Ticket::select('tickets.*','personal.nombre_p_mostrar','areas.area')
-        ->join('personal','tickets.id_personal','=','personal.id')
+        $data = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area')
+        ->join('users','tickets.id_personal','=','users.id')
         ->join('areas','tickets.id_area','=','areas.id_area')
         ->join('servicio','tickets.id_servicio','=','servicio.id_servicio')
         ->get();
@@ -34,10 +35,10 @@ class TicketController extends Controller
     {
         $areasCB = Area::select('id_area','area')->get();
         $servicioCB = Servicio::select('id_servicio','servicio')->get();
-        $personalCB = Personal::select('id','nombre_p_mostrar')->get();
+        $usuarioCB = User::select('id','nombre_p_mostrar')->get();
         $tarjetas = DB::connection('remote')->select("select no_oficio from correspondencia where interno = '1' and area = 'INFORMÁTICA' and estatus != '1'");
 
-        return view('tickets.create',compact('areasCB','servicioCB','personalCB','tarjetas'));
+        return view('tickets.create',compact('areasCB','servicioCB','usuarioCB','tarjetas'));
     }
 
     public function store(Request $request)
@@ -75,8 +76,8 @@ class TicketController extends Controller
 
     public function show($id)
     {
-        $ticket = Ticket::select('tickets.*','personal.nombre_p_mostrar','areas.area','servicio.servicio')
-        ->join('personal','tickets.id_personal','=','personal.id')
+        $ticket = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area','servicio.servicio')
+        ->join('users','tickets.id_personal','=','users.id')
         ->join('areas','tickets.id_area','=','areas.id_area')
         ->join('servicio','tickets.id_servicio','=','servicio.id_servicio')
         ->where('tickets.id','=',$id)
@@ -88,9 +89,9 @@ class TicketController extends Controller
     {
         $areasCB = Area::select('id_area','area')->get();
         $servicioCB = Servicio::select('id_servicio','servicio')->get();
-        $personalCB = Personal::select('id','nombre_p_mostrar')->get();
+        $usuarioCB = User::select('id','nombre_p_mostrar')->get();
         $tarjetasCB = DB::connection('remote')->select("select no_oficio from correspondencia where interno = '1' and area = 'INFORMÁTICA' and estatus != '1'");
-        return view('tickets.edit', compact('ticket','areasCB','servicioCB','personalCB','tarjetasCB'));
+        return view('tickets.edit', compact('ticket','areasCB','servicioCB','usuarioCB','tarjetasCB'));
     }
 
     public function update(Request $request, Ticket $ticket)

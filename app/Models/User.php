@@ -18,23 +18,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'titulo',
         'nombre',
-        'nombre_p_mostrar',
-        'curp',
-        'ced_pro',
-        'tit_pro',
-        'departamento',
-        'depto',
-        'siglas',
+        'paterno',
+        'materno',
+        'tipo',
         'puesto',
         'clave',
-        'activo',
-        'cambiar_passw',
-        'contrasenia',
-        'tipo',
-        'centro',
-        'ultima_permanencia'
+        'password',
+        'remember_token',
+        'id_area',
+        'nombre_p_mostrar'
     ];
 
     /**
@@ -43,7 +36,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'contrasenia',
+        'password',
     ];
 
     public function getInitialsAttribute()
