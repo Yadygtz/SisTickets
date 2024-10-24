@@ -31,7 +31,7 @@ class UsuariosController extends Controller
     public function create()
     {
         //
-        $ids = ['Sistemas', 'Redes'];
+        $ids = ['SISTEMAS', 'REDES','DIRECCIÓN'];
         $areasCB = Area::select('id_area', 'area')->WhereIn('area', $ids)->get();
         return view("users.create", compact('areasCB'));
     }

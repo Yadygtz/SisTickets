@@ -22,12 +22,36 @@ class TicketController extends Controller
 
     public function getdata()
     {
-        //$data = Ticket::all();
-        $data = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area')
-        ->join('users','tickets.id_personal','=','users.id')
-        ->join('areas','tickets.id_area','=','areas.id_area')
-        ->join('servicio','tickets.id_servicio','=','servicio.id_servicio')
-        ->get();
+
+        $puesto = auth()->user()->puesto;
+        $tipo = auth()->user()->tipo;
+        $id_usuario = auth()->user()->id;
+        $area = auth()->user()->id_area;
+
+        $usuarios = User::where('id_area',$area)->pluck('id')->toArray();
+
+        if($puesto == "Director" OR $puesto == "Jefe de Departamento"){
+            $data = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area')
+            ->join('users','tickets.id_personal','=','users.id')
+            ->join('areas','tickets.id_area','=','areas.id_area')
+            ->join('servicio','tickets.id_servicio','=','servicio.id_servicio')
+            ->get();
+        }elseif( $puesto == 'Jefe de Unidad'){
+            $data = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area')
+            ->join('users','tickets.id_personal','=','users.id')
+            ->join('areas','tickets.id_area','=','areas.id_area')
+            ->join('servicio','tickets.id_servicio','=','servicio.id_servicio')
+            ->whereIn('tickets.id_personal',$usuarios)
+            ->get();
+        }else{
+            $data = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area')
+            ->join('users','tickets.id_personal','=','users.id')
+            ->join('areas','tickets.id_area','=','areas.id_area')
+            ->join('servicio','tickets.id_servicio','=','servicio.id_servicio')
+             ->where('tickets.id_personal','=',$id_usuario)
+            ->get();
+        }
+
         return response()->json($data);
     }
 
@@ -154,5 +178,7 @@ class TicketController extends Controller
         ]);
 
     }
+
+
 
 }
