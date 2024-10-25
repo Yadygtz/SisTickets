@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\reporte_pdf_Controller;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
@@ -45,4 +46,5 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('usuarios', UsuariosController::class);
+    Route::post('/reporte', [reporte_pdf_Controller::class, 'generarPdf'])->name('reporte');
 });

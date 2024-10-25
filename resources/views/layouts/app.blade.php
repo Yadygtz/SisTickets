@@ -40,6 +40,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/tickets')}}">Tareas</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#filtroModal">Reporte</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -84,6 +87,37 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <div class="modal fade" id="filtroModal" tabindex="-1" role="dialog" aria-labelledby="filtroModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="filtroModalLabel">Rangos de Fecha</h5>
+
+                    </div>
+                    <div class="modal-body">
+                        <form action = "{{ route('reporte') }}" method="POST">
+                            @csrf
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Fecha Inicio</label>
+                                    <input type="date" class="form-control" id="fecha_ini" name="fecha_ini" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Fecha Fin</label>
+                                    <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Reporte PDF</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
      <!-- Scripts -->
      <script src="{{ asset('js/jquery.js') }}"></script>

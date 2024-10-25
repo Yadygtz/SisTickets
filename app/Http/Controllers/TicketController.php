@@ -122,7 +122,6 @@ class TicketController extends Controller
     {
         // Validar los datos de entrada
         $request->validate([
-            'title' => 'required|string|max:255',
             'description' => 'required|string',
             'estatus' => 'required|string',
         ]);
@@ -143,7 +142,7 @@ class TicketController extends Controller
             'origen'=>$request->origen,
             'user_id' => auth()->user()->id, // Puedes actualizar el user_id si es necesario
         ]);
-        $pendientes = Ticket::where('title',$request->title)->whereIn('estatus',['Abierto','En Progreso'])->exists();
+        $pendientes = Ticket::where('title',$request->title)->whereIn('estatus',['ABIERTO','EN PROGRESO'])->exists();
 
         if($pendientes){
 

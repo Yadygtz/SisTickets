@@ -23,16 +23,16 @@
                     <table class="table align items-center pb-0 mt-1" id="DStabla">
                         <thead>
                             <tr>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarjeta</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Descripción
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">ID</th>
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Tarjeta</th>
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Descripción
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Area</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Estado</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prioridad
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Area</th>
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Estado</th>
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Prioridad
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Atiende</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Atiende</th>
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Acciones
                                 </th>
                                 {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th> --}}
                             </tr>
@@ -127,9 +127,11 @@
                     "data": null,
                     "render": function(data, type) {
                         var deshabilitado = data.estatus == 'Cerrado'?'disabled':'';
+                        var r1 = "{{ route('tickets.show',':id') }}".replace(':id',data.id);
+                        var r2 = "{{ route('tickets.edit',':id') }}".replace(':id',data.id);
                         return '<div class="d-flex"> ' +
-                            '<a href="{{ route('tickets.show', '') }}/' + data.id +
-                            '" class="btn btn-primary w-30 btn-icon mb-0 me-1" > <svg xmlns="http://www.w3.org/2000/svg" width="24"' +
+                            '<a href="'+r1+'"' +
+                            'class="btn btn-primary w-30 btn-icon mb-0 me-1" > <svg xmlns="http://www.w3.org/2000/svg" width="24"' +
                             'height="24" viewBox="0 0 24 24" fill="none"' +
                             'stroke="currentColor" stroke-width="2" stroke-linecap="round" ' +
                             'stroke-linejoin="round"' +
@@ -138,8 +140,8 @@
                             '<path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />' +
                             '<path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /> </svg>' +
                             '</a>' +
-                            '<a href="/tickets/' + data.id +
-                            '/edit" class="btn btn-outline-secondary w-30 btn-icon mb-0 '+ deshabilitado +' " >' +
+                            '<a href="'+r2+'"' +
+                            'class="btn btn-outline-secondary w-30 btn-icon mb-0 '+ deshabilitado +' " >' +
                             '<svg xmlns="http://www.w3.org/2000/svg" width="24"' +
                             'height="24" viewBox="0 0 24 24" fill="none"' +
                             'stroke="currentColor" stroke-width="2" stroke-linecap="round"' +
@@ -158,7 +160,7 @@
             "autoWidth": false,
             "columnDefs": [{
                     "targets": "_all",
-                    "className": "text-xs font-weight-bold align-middle"
+                    "className": "fs-5 font-weight-bold align-middle"
                 },
 
             ],

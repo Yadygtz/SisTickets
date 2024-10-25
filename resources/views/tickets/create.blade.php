@@ -66,9 +66,9 @@
                             <div class="col-md-3">
                                 <label for="prioridad" class="form-label">Prioridad</label>
                                 <select class="form-select" id="prioridad" name="prioridad">
-                                    <option value="Alta">ALTA</option>
-                                    <option value="Media">MEDIA</option>
-                                    <option value="Baja">BAJA</option>
+                                    <option value="ALTA">ALTA</option>
+                                    <option value="MEDIA">MEDIA</option>
+                                    <option value="BAJA">BAJA</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -95,9 +95,9 @@
                             <div class="col-md-3">
                                 <label for="estatus" class="form-label">Estado</label>
                                 <select class="form-select" id="estatus" name="estatus">
-                                    <option value="Abierto">Abierto</option>
-                                    <option value="En progreso">En progreso</option>
-                                    <option value="Cerrado">Cerrado</option>
+                                    <option value="ABIERTO">ABIERTO</option>
+                                    <option value="EN PROGRESO">EN PROGRESO</option>
+                                    <option value="CERRADO">CERRADO</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -135,7 +135,7 @@
             //console.log( $("#estatus").is(":checked"));
             var myDateInput = document.getElementById("fecha_termino");
             //myDateInput.disabled = !$("#estatus").is(":checked");
-            if ($("#estatus").val() === 'Cerrado') {
+            if ($("#estatus").val() === 'CERRADO') {
                 myDateInput.disabled = false; // Habilita el campo de fecha
             } else {
                 myDateInput.disabled = true; // Deshabilita el campo de fecha

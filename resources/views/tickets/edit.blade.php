@@ -44,8 +44,8 @@
             <div class="col-md-2">
                 <label for="origen" class="form-label">Origen de solicitud</label>
                 <select class="form-select" id="origen" name="origen">
-                    <option value="Llamada" {{$ticket->origen == 'Llamada' ? 'selected' : '' }}>Llamada</option>
-                    <option value="Tarjeta" {{$ticket->origen == 'Tarjeta' ? 'selected' : '' }}>Tarjeta</option>
+                    <option value="Llamada" {{$ticket->origen == 'Llamada' ? 'selected' : '' }}>LLAMADA</option>
+                    <option value="Tarjeta" {{$ticket->origen == 'Tarjeta' ? 'selected' : '' }}>TARJETA</option>
                 </select>
             </div>
             <div class="col-md-4">
@@ -97,9 +97,9 @@
             <div class="col-md-3">
                 <label for="status" class="form-label">Estado</label>
                 <select class="form-select" id="estatus" name="estatus">
-                    <option value="Abierto" {{ $ticket->estatus == 'Abierto' ? 'selected' : '' }}>Abierto</option>
-                    <option value="En progreso" {{ $ticket->estatus == 'En progreso' ? 'selected' : '' }}>En progreso</option>
-                    <option value="Cerrado" {{ $ticket->estatus == 'Cerrado' ? 'selected' : '' }}>Cerrado</option>
+                    <option value="ABIERTO" {{ $ticket->estatus == 'ABIERTO' ? 'selected' : '' }}>ABIERTO</option>
+                    <option value="EN PROGRESO" {{ $ticket->estatus == 'EN PROGRESO' ? 'selected' : '' }}>EN PROGRESO</option>
+                    <option value="CERRADO" {{ $ticket->estatus == 'CERRADO' ? 'selected' : '' }}>CERRADO</option>
                 </select>
             </div>
             <div class="col-md-3">
@@ -124,7 +124,7 @@
                 //console.log( $("#estatus").is(":checked"));
                 var myDateInput2 = document.getElementById("fecha_termino");
                 //myDateInput.disabled = !$("#estatus").is(":checked");
-                if ($("#estatus").val() === 'Cerrado') {
+                if ($("#estatus").val() === 'CERRADO') {
                 myDateInput2.disabled = false; // Habilita el campo de fecha
                 } else {
                     myDateInput2.disabled = true; // Deshabilita el campo de fecha
