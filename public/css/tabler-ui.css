@@ -166,7 +166,7 @@
   --tblr-border-style: solid;
   --tblr-border-color: #dadfe5;
   --tblr-border-color-translucent: rgba(4, 32, 69, 0.14);
-  --tblr-border-radius: 1rem;
+  --tblr-border-radius: .5rem;
   --tblr-border-radius-sm: 2px;
   --tblr-border-radius-lg: 8px;
   --tblr-border-radius-xl: 1rem;
@@ -3648,7 +3648,7 @@ textarea.form-control-lg {
   box-shadow: var(--tblr-btn-box-shadow), var(--tblr-btn-focus-box-shadow);
 }
 .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
-  color: var(--tblr-btn-active-color);
+  color: white;
   background-color: var(--tblr-btn-active-bg);
   border-color: var(--tblr-btn-active-border-color);
   box-shadow: var(--tblr-btn-active-shadow);
@@ -4743,18 +4743,33 @@ body[data-bs-theme=dark] .navbar[data-bs-theme=light] {
   --tblr-card-bg: var(--tblr-bg-surface);
   --tblr-card-img-overlay-padding: 1rem;
   --tblr-card-group-margin: 1.5rem;
+  --bs-card-spacer-y: 1rem;
+  --bs-card-spacer-x: 1rem;
+  --bs-card-title-spacer-y: 0.5rem;
+  --bs-card-border-width: 0;
+  --bs-card-border-color: rgba(0, 0, 0, 0.125);
+  --bs-card-border-radius: 1rem;
+  --bs-card-box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+  --bs-card-inner-border-radius: 1rem;
+  --bs-card-cap-padding-y: 0.5rem;
+  --bs-card-cap-padding-x: 1rem;
+  --bs-card-cap-bg: #fff;
+  --bs-card-cap-color: ;
+  --bs-card-height: ;
+  --bs-card-color: ;
+  --bs-card-bg: #fff;
+  --bs-card-img-overlay-padding: 1rem;
+  --bs-card-group-margin: 0.75rem;
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
-  height: var(--tblr-card-height);
-  color: var(--tblr-body-color);
+  height: var(--bs-card-height);
   word-wrap: break-word;
-  background-color: var(--tblr-card-bg);
+  background-color: var(--bs-card-bg);
   background-clip: border-box;
-  border: 0 solid rgba(0, 0, 0, 0.125);
-  border-radius: var(--tblr-card-border-radius);
-  box-shadow: var(--tblr-card-box-shadow);
+  border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+  border-radius: var(--bs-card-border-radius);
 }
 .card > hr, .card > .hr {
   margin-right: 0;
@@ -23612,7 +23627,7 @@ a.step-item:hover {
 }
 
 .table-responsive .table, .table-responsive .markdown > table {
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
 }
 .table-responsive + .card-footer {
   border-top: 0;
@@ -23848,6 +23863,9 @@ a.step-item:hover {
   }
 }
 
+.table tr:last-child td {
+    border-bottom: none !important;
+}
 /**
 Table sort
  */
