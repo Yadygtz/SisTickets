@@ -31,20 +31,20 @@ class TicketController extends Controller
         $usuarios = User::where('id_area',$area)->pluck('id')->toArray();
 
         if($puesto == "Director" OR $puesto == "Jefe de Departamento"){
-            $data = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area')
+            $data = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area','servicio.servicio')
             ->join('users','tickets.id_personal','=','users.id')
             ->join('areas','tickets.id_area','=','areas.id_area')
             ->join('servicio','tickets.id_servicio','=','servicio.id_servicio')
             ->get();
         }elseif( $puesto == 'Jefe de Unidad'){
-            $data = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area')
+            $data = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area','servicio.servicio')
             ->join('users','tickets.id_personal','=','users.id')
             ->join('areas','tickets.id_area','=','areas.id_area')
             ->join('servicio','tickets.id_servicio','=','servicio.id_servicio')
             ->whereIn('tickets.id_personal',$usuarios)
             ->get();
         }else{
-            $data = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area')
+            $data = Ticket::select('tickets.*','users.nombre_p_mostrar','areas.area','servicio.servicio')
             ->join('users','tickets.id_personal','=','users.id')
             ->join('areas','tickets.id_area','=','areas.id_area')
             ->join('servicio','tickets.id_servicio','=','servicio.id_servicio')

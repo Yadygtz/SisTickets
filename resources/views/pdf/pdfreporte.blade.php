@@ -36,6 +36,7 @@
             background-color: #ab0033; /* Fondo para encabezados */
             color: #f9f9f9;
             font-size: 12px;
+            text-align: center;
 
         }
         tr:nth-child(even) {
