@@ -6,6 +6,7 @@ use App\Models\Ticket;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use DateTime;
+use Dompdf\Adapter\PDFLib;
 use Illuminate\Http\Request;
 use PDF; // Importa la clase PDF
 class reporte_pdf_Controller extends Controller
@@ -35,7 +36,7 @@ class reporte_pdf_Controller extends Controller
         $fecha_inicial = $fecha_ini_obj->format('d/m/Y');
         $fecha_final = $fecha_fin_obj->format('d/m/Y');
         // Cargar la vista y pasarle los datos
-        $pdf = PDF::loadView('pdf.pdfreporte', compact('datos','fecha_inicial','fecha_final'));
+        $pdf = FacadePdf::loadView('pdf.pdfreporte', compact('datos','fecha_inicial','fecha_final'));
 
         // Devolver el PDF como respuesta
         return $pdf->download('Informe de Actividades.pdf');

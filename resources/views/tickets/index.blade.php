@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('titulo', 'Tickets')
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-between mb-3">
@@ -25,7 +25,7 @@
                             <tr>
                                 <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">ID</th>
                                 <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Tarjeta</th>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Descripción
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Servicio
                                 </th>
                                 <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Area</th>
                                 <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Estado</th>
@@ -108,7 +108,7 @@
                     "data": "title"
                 },
                 {
-                    "data": "description"
+                    "data": "servicio"
                 },
                 {
                     "data": "area"
