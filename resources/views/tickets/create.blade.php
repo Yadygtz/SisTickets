@@ -46,9 +46,10 @@
                                 <label for="origen" class="form-label">Origen de solicitud</label>
                                 <select class="form-select" id="origen" name="origen">
                                     <option selected value="">Seleccione una opción</option>
-                                    <option value="Llamada">Personal</option>
+                                    <option value="Personal">Personal</option>
                                     <option value="Llamada">Llamada</option>
                                     <option value="Tarjeta">Tarjeta</option>
+                                    <option value="Spark">Spark</option>
                                 </select>
                             </div>
                             <div class="col-md-4">
@@ -165,6 +166,13 @@
 @endsection
 @push('scripts')
     <script>
+           @if (session('error'))
+            Swal.fire({
+            icon: "error",
+            title: @json(session('error'))
+            });
+        @endif
+
         var fechaActual = "{{ $fechaActual }}";
         $("#fecha_termino").prop("disabled", true);
         $("#estatus").on('change', function() {
