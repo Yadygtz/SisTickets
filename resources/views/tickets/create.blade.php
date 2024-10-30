@@ -36,6 +36,7 @@
                             <div class="col-md-2">
                                 <label for="area" class="form-label">Área</label>
                                 <select class="form-select" id="id_area" name="id_area">
+                                    <option selected value=""> Seleccione un Área </option>
                                     @foreach ($areasCB as $area)
                                         <option value="{{ $area->id_area }}">{{ $area->area }}</option>
                                     @endforeach
@@ -44,6 +45,8 @@
                             <div class="col-md-2">
                                 <label for="origen" class="form-label">Origen de solicitud</label>
                                 <select class="form-select" id="origen" name="origen">
+                                    <option selected value="">Seleccione una opción</option>
+                                    <option value="Llamada">Personal</option>
                                     <option value="Llamada">Llamada</option>
                                     <option value="Tarjeta">Tarjeta</option>
                                 </select>
@@ -51,6 +54,7 @@
                             <div class="col-md-4">
                                 <label class="form-label">Quien solicita</label>
                                  <select class="form-select" id="solicita" name="solicita">
+                                    <option value="">Seleccione una opción</option>
                                     <option value="LIC. JOEL SIERRA REYES">LIC. JOEL SIERRA REYES</option>
                                     <option value="LIC. DORA GUADALUPE GARCIA CASTELAN">LIC. DORA GUADALUPE GARCIA CASTELAN</option>
                                     <option value="LIC. ALAIN SAID BUENFIL MORALES">LIC. ALAIN SAID BUENFIL MORALES</option>
@@ -68,7 +72,10 @@
                                     <option value="ING. JUAN CARLOS MIRELES REYNA">ING. JUAN CARLOS MIRELES REYNA</option>
                                     <option value="LIC. MARTHA ELVA ESCOBEDO CONDE">LIC. MARTHA ELVA ESCOBEDO CONDE</option>
                                     <option value="ING. IRAK CORPUS ROCHA">ING. IRAK CORPUS ROCHA</option>
-                                    <option value="ING. IRAK CORPUS ROCHA">ING. IRAK CORPUS ROCHA</option>
+                                    <option value="LIC. MARIA DEL CONSUELO TERAN RODRIGUEZ">LIC. MARIA DEL CONSUELO TERAN RODRIGUEZ</option>
+                                    <option value="LIC. ENA ANAYA">LIC. ENA ANAYA</option>
+                                    <option value="LIC. YAZMIN CISNEROS">LIC. YAZMIN CISNEROS</option>
+                                    <option value="LIC. MARIA ALEJANDRA CARDENAS">LIC. MARIA ALEJANDRA CARDENAS</option>
                                 </select>
                             </div>
                         </div>
@@ -76,6 +83,7 @@
                             <div class="col-md-6">
                                 <label for="servicio" class="form-label">Servicio</label>
                                 <select class="form-select" id="id_servicio" name="id_servicio">
+                                    <option selected value=""> Seleccione una servicio</option>
                                     @foreach ($servicioCB as $servicio)
                                         <option value="{{ $servicio->id_servicio }}">{{ $servicio->servicio }}</option>
                                     @endforeach
@@ -84,6 +92,7 @@
                             <div class="col-md-3">
                                 <label for="prioridad" class="form-label">Prioridad</label>
                                 <select class="form-select" id="prioridad" name="prioridad">
+                                    <option selected value=""> Seleccione una prioridad </option>
                                     <option value="ALTA">ALTA</option>
                                     <option value="MEDIA">MEDIA</option>
                                     <option value="BAJA">BAJA</option>
@@ -111,6 +120,7 @@
                             <div class="col-md-6">
                                 <label for="asignado" class="form-label">Quien atiende</label>
                                 <select class="form-select" id="id_personal" name="id_personal">
+                                    <option selected value=""> Seleccione una opción </option>
                                     @foreach ($usuarioCB as $usuario)
                                         <option value="{{ $usuario->id }}">{{ $usuario->nombre_p_mostrar }}</option>
                                     @endforeach
@@ -119,6 +129,7 @@
                             <div class="col-md-3">
                                 <label for="estatus" class="form-label">Estado</label>
                                 <select class="form-select" id="estatus" name="estatus">
+                                    <option selected value=""> Seleccione una opción </option>
                                     <option value="ABIERTO">ABIERTO</option>
                                     <option value="EN PROGRESO">EN PROGRESO</option>
                                     <option value="CERRADO">CERRADO</option>
