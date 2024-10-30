@@ -48,13 +48,19 @@
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Fecha aproximada de atención</label>
-                    <input type="text" class="form-control" name="fecha_aprox" id="fecha_aprox" value="{{ $ticket->fecha_aprox }}" disabled>
+                    <input type="date" class="form-control" name="fecha_aprox" id="fecha_aprox" value="{{ $ticket->fecha_aprox }}" disabled>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-12">
                     <label for="description" class="form-label">Descripción</label>
                     <textarea class="form-control" id="description" name="description" rows="3" disabled>{{ $ticket->description }}</textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="observaciones" class="form-label">Observaciones</label>
+                    <textarea class="form-control" id="observaciones" name="observaciones" rows="3" disabled>{{ $ticket->observaciones }}</textarea>
                 </div>
             </div>
             <div class="row mb-3">
@@ -69,7 +75,7 @@
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Fecha cierre</label>
-                    <input type="text" class="form-control" name="fecha_termino" id="fecha_termino" value="{{ $ticket->fecha_termino }}" disabled>
+                    <input type="date" class="form-control" name="fecha_termino" id="fecha_termino" value="{{ $ticket->fecha_termino }}" disabled>
                 </div>
             </div>
 

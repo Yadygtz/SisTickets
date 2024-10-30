@@ -79,11 +79,15 @@
         <div class="row mb-3">
             <div class="col-md-12">
                 <label for="description" class="form-label">Descripción</label>
-                <textarea class="form-control" id="description" name="description" rows="3" required>{{ $ticket->description }}</textarea>
+                <textarea class="form-control" id="description" name="description" rows="3">{{ $ticket->description }}</textarea>
             </div>
-
         </div>
-
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label for="observaciones" class="form-label">Observaciones</label>
+                <textarea class="form-control" id="observaciones" name="observaciones" rows="3">{{ $ticket->observaciones }}</textarea>
+            </div>
+        </div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="asignado" class="form-label">Quien atiende</label>
@@ -104,7 +108,7 @@
             </div>
             <div class="col-md-3">
                 <label class="form-label">Fecha cierre</label>
-                <input type="date" class="form-control" name="fecha_termino" id="fecha_termino" value="{{ $ticket->fecha_termino }}" required>
+                <input type="date" class="form-control" name="fecha_termino" id="fecha_termino" value="{{ $ticket->fecha_termino }}">
             </div>
         </div>
 
@@ -118,17 +122,19 @@
 @endsection
 @push('scripts')
     <script>
+        var fechaActual = "{{ $fechaActual }}";
         $("#fecha_termino").prop("disabled",true);
 
         $("#estatus").on('change', function() {
                 //console.log( $("#estatus").is(":checked"));
-                var myDateInput2 = document.getElementById("fecha_termino");
+                var myDateInput3 = document.getElementById("fecha_termino");
                 //myDateInput.disabled = !$("#estatus").is(":checked");
                 if ($("#estatus").val() === 'CERRADO') {
-                myDateInput2.disabled = false; // Habilita el campo de fecha
+                    myDateInput3.value = fechaActual;
+                    myDateInput3.disabled = true; // Habilita el campo de fecha
                 } else {
-                    myDateInput2.disabled = true; // Deshabilita el campo de fecha
-                    myDateInput2.value = ''; // Limpia el campo de fecha
+                    myDateInput3.disabled = true; // Deshabilita el campo de fecha
+                    myDateInput3.value = ''; // Limpia el campo de fecha
                 }
             });
     </script>

@@ -50,8 +50,26 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Quien solicita</label>
-                                <input type="text" class="form-control" name="solicita" id="solicita" value=""
-                                    required>
+                                 <select class="form-select" id="solicita" name="solicita">
+                                    <option value="LIC. JOEL SIERRA REYES">LIC. JOEL SIERRA REYES</option>
+                                    <option value="LIC. DORA GUADALUPE GARCIA CASTELAN">LIC. DORA GUADALUPE GARCIA CASTELAN</option>
+                                    <option value="LIC. ALAIN SAID BUENFIL MORALES">LIC. ALAIN SAID BUENFIL MORALES</option>
+                                    <option value="LIC. ARIANA CAROLINA PRIEGO IZQUIERDO">LIC. ARIANA CAROLINA PRIEGO IZQUIERDO</option>
+                                    <option value="QUIMICA DEL ANGEL DEL ANGEL ILSE DANIELA">QUIMICA DEL ANGEL DEL ANGEL ILSE DANIELA</option>
+                                    <option value="DR. DAVID YAHIR ARIZMENDI CARVAJAL">DR. DAVID YAHIR ARIZMENDI CARVAJAL</option>
+                                    <option value="DRA. MONICA KARINA PAULIN GUZMAN">DRA. MONICA KARINA PAULIN GUZMAN</option>
+                                    <option value="DRA. FENICIA MELINA GUADALUPE SALDIVAR CASTILLO">DRA. FENICIA MELINA GUADALUPE SALDIVAR CASTILLO</option>
+                                    <option value="LIC. CLAUDIA ARACELY GARCIA MEZA">LIC. CLAUDIA ARACELY GARCIA MEZA</option>
+                                    <option value="LIC. JOSE RAUL RAMIREZ VILLEGAS">LIC. JOSE RAUL RAMIREZ VILLEGAS</option>
+                                    <option value="MTRO. OMAR CISNEROS RODRIGUEZ">MTRO. OMAR CISNEROS RODRIGUEZ</option>
+                                    <option value="LIC. SARA ELIZABETH RAMIREZ GARCIA">LIC. SARA ELIZABETH RAMIREZ GARCIA</option>
+                                    <option value="LIC. JESUS GERARDO TORRES TORRES">LIC. JESUS GERARDO TORRES TORRES</option>
+                                    <option value="LIC. JOSE DARÍO MATA RODRIGUEZ">LIC. JESUS GERARDO TORRES TORRES</option>
+                                    <option value="ING. JUAN CARLOS MIRELES REYNA">ING. JUAN CARLOS MIRELES REYNA</option>
+                                    <option value="LIC. MARTHA ELVA ESCOBEDO CONDE">LIC. MARTHA ELVA ESCOBEDO CONDE</option>
+                                    <option value="ING. IRAK CORPUS ROCHA">ING. IRAK CORPUS ROCHA</option>
+                                    <option value="ING. IRAK CORPUS ROCHA">ING. IRAK CORPUS ROCHA</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -81,6 +99,12 @@
                             <div class="col-md-12">
                                 <label for="description" class="form-label">Descripción</label>
                                 <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label for="observaciones" class="form-label">Observaciones</label>
+                                <textarea class="form-control" id="observaciones" name="observaciones" rows="3"></textarea>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -130,13 +154,16 @@
 @endsection
 @push('scripts')
     <script>
+        var fechaActual = "{{ $fechaActual }}";
         $("#fecha_termino").prop("disabled", true);
         $("#estatus").on('change', function() {
             //console.log( $("#estatus").is(":checked"));
             var myDateInput = document.getElementById("fecha_termino");
             //myDateInput.disabled = !$("#estatus").is(":checked");
             if ($("#estatus").val() === 'CERRADO') {
-                myDateInput.disabled = false; // Habilita el campo de fecha
+
+                myDateInput.value = fechaActual;
+                myDateInput.disabled = true; // Habilita el campo de fecha
             } else {
                 myDateInput.disabled = true; // Deshabilita el campo de fecha
                 myDateInput.value = ''; // Limpia el campo de fecha

@@ -3,8 +3,16 @@
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-between mb-3">
-            <h1>Tickets</h1>
-            <a href="{{ route('tickets.create') }}" class="btn btn-primary">Crear Ticket</a>
+            <h1 style="margin-bottom: 0">Tickets</h1>
+            <a href="{{ route('tickets.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M12 5l0 14"></path>
+                    <path d="M5 12l14 0"></path>
+                </svg>
+                Crear Ticket
+            </a>
         </div>
         <div class="card">
             <div class="card-body">
@@ -25,16 +33,12 @@
                             <tr>
                                 <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">ID</th>
                                 <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Tarjeta</th>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Servicio
-                                </th>
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Servicio</th>
                                 <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Area</th>
                                 <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Estado</th>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Prioridad
-                                </th>
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Prioridad</th>
                                 <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Atiende</th>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Acciones
-                                </th>
-                                {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th> --}}
+                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Acciones</th>
                             </tr>
                         </thead>
                     </table>
@@ -126,7 +130,7 @@
                     "orderable": false,
                     "data": null,
                     "render": function(data, type) {
-                        var deshabilitado = data.estatus == 'Cerrado'?'disabled':'';
+                        var deshabilitado = data.estatus == 'CERRADO'?'disabled':'';
                         var r1 = "{{ route('tickets.show',':id') }}".replace(':id',data.id);
                         var r2 = "{{ route('tickets.edit',':id') }}".replace(':id',data.id);
                         return '<div class="d-flex"> ' +

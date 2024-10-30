@@ -60,9 +60,11 @@ class TicketController extends Controller
         $areasCB = Area::select('id_area','area')->get();
         $servicioCB = Servicio::select('id_servicio','servicio')->get();
         $usuarioCB = User::select('id','nombre_p_mostrar')->get();
+        $fechaActual = Carbon::now()->format('Y-m-d');
+        //dd($fechaActual);
         $tarjetas = DB::connection('remote')->select("select no_oficio from correspondencia where interno = '1' and area = 'INFORMÁTICA' and estatus != '1'");
 
-        return view('tickets.create',compact('areasCB','servicioCB','usuarioCB','tarjetas'));
+        return view('tickets.create',compact('areasCB','servicioCB','usuarioCB','tarjetas','fechaActual'));
     }
 
     public function store(Request $request)
@@ -76,23 +78,29 @@ class TicketController extends Controller
 
         ]);
 
+        try{
 
-                // Crear el ticket con el user_id
-                Ticket::create([
-                    'title' => $request->title,
-                    'description' => $request->description,
-                    'user_id' => auth()->user()->id,
-                    'id_servicio'=>$request->id_servicio,
-                    'id_area'=>$request->id_area,
-                    'id_personal'=>$request->id_personal,
-                    'solicita'=>$request->solicita,
-                    'fecha_registro'=> $request->fecha_registro,
-                    'fecha_aprox'=> $request->fecha_aprox,
-                    'fecha_termino'=> $request->fecha_termino,
-                    'estatus'=>$request->estatus,
-                    'prioridad'=>$request->prioridad,
-                    'origen'=>$request->origen
-                ]);
+            // Crear el ticket con el user_id
+            Ticket::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'observaciones' => $request->observaciones,
+                'user_id' => auth()->user()->id,
+                'id_servicio'=>$request->id_servicio,
+                'id_area'=>$request->id_area,
+                'id_personal'=>$request->id_personal,
+                'solicita'=>$request->solicita,
+                'fecha_registro'=> $request->fecha_registro,
+                'fecha_aprox'=> $request->fecha_aprox,
+                'fecha_termino'=> $request->estatus == 'CERRADO' ? Carbon::now()->format('Y-m-d'): Null,
+                'estatus'=>$request->estatus,
+                'prioridad'=>$request->prioridad,
+                'origen'=>$request->origen
+            ]);
+
+        } catch (\Throwable $th) {
+                return redirect()->back()->with('error', $th->getMessage());
+        }
 
                 // Redirigir con un mensaje de éxito
                 return redirect()->route('tickets.index')->with('success', 'Ticket creado exitosamente.');
@@ -114,8 +122,9 @@ class TicketController extends Controller
         $areasCB = Area::select('id_area','area')->get();
         $servicioCB = Servicio::select('id_servicio','servicio')->get();
         $usuarioCB = User::select('id','nombre_p_mostrar')->get();
+        $fechaActual = Carbon::now()->format('Y-m-d');
         $tarjetasCB = DB::connection('remote')->select("select no_oficio from correspondencia where interno = '1' and area = 'INFORMÁTICA' and estatus != '1'");
-        return view('tickets.edit', compact('ticket','areasCB','servicioCB','usuarioCB','tarjetasCB'));
+        return view('tickets.edit', compact('ticket','areasCB','servicioCB','usuarioCB','tarjetasCB','fechaActual'));
     }
 
     public function update(Request $request, Ticket $ticket)
