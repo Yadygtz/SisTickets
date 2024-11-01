@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class TicketController extends Controller
 {
@@ -60,11 +61,39 @@ class TicketController extends Controller
         $areasCB = Area::select('id_area','area')->get();
         $servicioCB = Servicio::select('id_servicio','servicio')->get();
         $usuarioCB = User::select('id','nombre_p_mostrar')->get();
+        $personalCB = Personal::select('nombre')->get();
         $fechaActual = Carbon::now()->format('Y-m-d');
         //dd($fechaActual);
         $tarjetas = DB::connection('remote')->select("select no_oficio from correspondencia where interno = '1' and area = 'INFORMÁTICA' and estatus != '1'");
 
         return view('tickets.create',compact('areasCB','servicioCB','usuarioCB','tarjetas','fechaActual'));
+    }
+
+    // public function getPersonal(Request $request)
+    // {
+    //     $areaId = $request->input('area_id');
+    //     $PersonalFiltrado = Personal::where('id_area','=', $areaId)->get();
+    //     dd($PersonalFiltrado);
+
+    //     return response()->json($PersonalFiltrado);
+    // }
+    public function getPersonal(Request $request)
+    {
+        $areaId = $request->input('area_id');
+
+        try {
+            $personalFiltrado = Personal::where('id_area', $areaId)->select('nombre')->get();
+
+            // Verifica si se encontraron resultados
+            if ($personalFiltrado->isEmpty()) {
+                return response()->json(['message' => 'No se encontraron personas para este área.'], 404);
+            }
+
+            return response()->json($personalFiltrado);
+        } catch (\Exception $e) {
+            Log::error('Error al obtener personal: ' . $e->getMessage());
+            return response()->json(['error' => 'Error interno del servidor'], 500);
+        }
     }
 
     public function store(Request $request)

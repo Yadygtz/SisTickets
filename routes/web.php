@@ -47,4 +47,5 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('usuarios', UsuariosController::class);
     Route::post('/reporte', [reporte_pdf_Controller::class, 'generarPdf'])->name('reporte');
+    Route::get('/getPersonal', [TicketController::class, 'getPersonal'])->name('getPersonal');
 });

@@ -56,27 +56,7 @@
                                 <label class="form-label">Quien solicita</label>
                                  <select class="form-select" id="solicita" name="solicita">
                                     <option value="">Seleccione una opción</option>
-                                    <option value="LIC. JOEL SIERRA REYES">LIC. JOEL SIERRA REYES</option>
-                                    <option value="LIC. DORA GUADALUPE GARCIA CASTELAN">LIC. DORA GUADALUPE GARCIA CASTELAN</option>
-                                    <option value="LIC. ALAIN SAID BUENFIL MORALES">LIC. ALAIN SAID BUENFIL MORALES</option>
-                                    <option value="LIC. ARIANA CAROLINA PRIEGO IZQUIERDO">LIC. ARIANA CAROLINA PRIEGO IZQUIERDO</option>
-                                    <option value="QUIMICA DEL ANGEL DEL ANGEL ILSE DANIELA">QUIMICA DEL ANGEL DEL ANGEL ILSE DANIELA</option>
-                                    <option value="DR. DAVID YAHIR ARIZMENDI CARVAJAL">DR. DAVID YAHIR ARIZMENDI CARVAJAL</option>
-                                    <option value="DRA. MONICA KARINA PAULIN GUZMAN">DRA. MONICA KARINA PAULIN GUZMAN</option>
-                                    <option value="DRA. FENICIA MELINA GUADALUPE SALDIVAR CASTILLO">DRA. FENICIA MELINA GUADALUPE SALDIVAR CASTILLO</option>
-                                    <option value="LIC. CLAUDIA ARACELY GARCIA MEZA">LIC. CLAUDIA ARACELY GARCIA MEZA</option>
-                                    <option value="LIC. JOSE RAUL RAMIREZ VILLEGAS">LIC. JOSE RAUL RAMIREZ VILLEGAS</option>
-                                    <option value="MTRO. OMAR CISNEROS RODRIGUEZ">MTRO. OMAR CISNEROS RODRIGUEZ</option>
-                                    <option value="LIC. SARA ELIZABETH RAMIREZ GARCIA">LIC. SARA ELIZABETH RAMIREZ GARCIA</option>
-                                    <option value="LIC. JESUS GERARDO TORRES TORRES">LIC. JESUS GERARDO TORRES TORRES</option>
-                                    <option value="LIC. JOSE DARÍO MATA RODRIGUEZ">LIC. JESUS GERARDO TORRES TORRES</option>
-                                    <option value="ING. JUAN CARLOS MIRELES REYNA">ING. JUAN CARLOS MIRELES REYNA</option>
-                                    <option value="LIC. MARTHA ELVA ESCOBEDO CONDE">LIC. MARTHA ELVA ESCOBEDO CONDE</option>
-                                    <option value="ING. IRAK CORPUS ROCHA">ING. IRAK CORPUS ROCHA</option>
-                                    <option value="LIC. MARIA DEL CONSUELO TERAN RODRIGUEZ">LIC. MARIA DEL CONSUELO TERAN RODRIGUEZ</option>
-                                    <option value="LIC. ENA ANAYA">LIC. ENA ANAYA</option>
-                                    <option value="LIC. YAZMIN CISNEROS">LIC. YAZMIN CISNEROS</option>
-                                    <option value="LIC. MARIA ALEJANDRA CARDENAS">LIC. MARIA ALEJANDRA CARDENAS</option>
+
                                 </select>
                             </div>
                         </div>
@@ -166,12 +146,45 @@
 @endsection
 @push('scripts')
     <script>
-           @if (session('error'))
+        @if (session('error'))
             Swal.fire({
             icon: "error",
             title: @json(session('error'))
             });
         @endif
+
+        $(document).ready(function() {
+    $('#id_area').change(function() {
+        var areaId = $(this).val();
+
+        // Limpiar el select 'atiende' al cambiar de área
+        $('#solicita').empty();
+        $('#solicita').append('<option value="">Selecciona una opción</option>');
+
+        if (areaId) {
+            $.ajax({
+                url: '{{ route('getPersonal') }}',
+                type: 'GET',
+                data: { area_id: areaId },
+                success: function(data) {
+                    console.log(data); // Verifica los datos recibidos
+
+                    if (data.length > 0) {
+                        $.each(data, function(key, value) {
+                            $('#solicita').append('<option value="'+value.nombre+'">'+value.nombre+'</option>');
+                        });
+                    } else {
+                        $('#solicita').append('<option value="">No hay personal disponible</option>');
+                    }
+                },
+                error: function(xhr) {
+                    console.error("Error en la solicitud: ", xhr);
+                }
+            });
+        }
+    });
+});
+
 
         var fechaActual = "{{ $fechaActual }}";
         $("#fecha_termino").prop("disabled", true);
