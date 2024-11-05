@@ -15953,7 +15953,7 @@ body {
 }
 
 * {
-  scrollbar-color: rgba(var(--tblr-scrollbar-color, var(--tblr-body-color-rgb)), 0.16) transparent;
+  scrollbar-color: rgba(var(--tblr-scrollbar-color, var(--tblr-body-color-rgb)), 0.16);
 }
 
 *::-webkit-scrollbar {

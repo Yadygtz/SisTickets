@@ -22,6 +22,8 @@
     <link id="pagestyle" href="{{ asset('assets/css/datatables.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/tabler-ui.css') }}" rel="stylesheet">
     <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
+    {{-- Select2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body>
     <div id="app">
@@ -128,6 +130,8 @@
      <script src="{{ asset('js/datatables.js') }}"></script>
      <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
      <script src="{{ asset('js/sweetalert.js') }}"></script>
+     {{-- Select2 --}}
+     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @stack('scripts')
 </body>
 </html>

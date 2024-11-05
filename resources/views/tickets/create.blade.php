@@ -54,8 +54,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Quien solicita</label>
-                                 <select class="form-select" id="solicita" name="solicita">
-                                    <option value="">Seleccione una opción</option>
+                                <select class="form-select" id="solicita" name="solicita" style="width: 100%;">
+                                    <option value=""></option>
 
                                 </select>
                             </div>
@@ -146,44 +146,52 @@
 @endsection
 @push('scripts')
     <script>
+        $('#solicita').select2({
+            placeholder: "Seleccionar persona",
+        });
+
         @if (session('error'))
             Swal.fire({
-            icon: "error",
-            title: @json(session('error'))
+                icon: "error",
+                title: @json(session('error'))
             });
         @endif
 
         $(document).ready(function() {
-    $('#id_area').change(function() {
-        var areaId = $(this).val();
+            $('#id_area').change(function() {
+                var areaId = $(this).val();
 
-        // Limpiar el select 'atiende' al cambiar de área
-        $('#solicita').empty();
-        $('#solicita').append('<option value="">Selecciona una opción</option>');
+                // Limpiar el select 'atiende' al cambiar de área
+                $('#solicita').empty();
+                $('#solicita').append('<option value="">Selecciona una opción</option>');
 
-        if (areaId) {
-            $.ajax({
-                url: '{{ route('getPersonal') }}',
-                type: 'GET',
-                data: { area_id: areaId },
-                success: function(data) {
-                    console.log(data); // Verifica los datos recibidos
+                if (areaId) {
+                    $.ajax({
+                        url: '{{ route('getPersonal') }}',
+                        type: 'GET',
+                        data: {
+                            area_id: areaId
+                        },
+                        success: function(data) {
+                            console.log(data); // Verifica los datos recibidos
 
-                    if (data.length > 0) {
-                        $.each(data, function(key, value) {
-                            $('#solicita').append('<option value="'+value.nombre+'">'+value.nombre+'</option>');
-                        });
-                    } else {
-                        $('#solicita').append('<option value="">No hay personal disponible</option>');
-                    }
-                },
-                error: function(xhr) {
-                    console.error("Error en la solicitud: ", xhr);
+                            if (data.length > 0) {
+                                $.each(data, function(key, value) {
+                                    $('#solicita').append('<option value="' + value
+                                        .nombre + '">' + value.nombre + '</option>');
+                                });
+                            } else {
+                                $('#solicita').append(
+                                    '<option value="">No hay personal disponible</option>');
+                            }
+                        },
+                        error: function(xhr) {
+                            console.error("Error en la solicitud: ", xhr);
+                        }
+                    });
                 }
             });
-        }
-    });
-});
+        });
 
 
         var fechaActual = "{{ $fechaActual }}";
@@ -221,8 +229,9 @@
                         if (data.existe == "SI") {
                             $("#fecha_registro").val(data.fecha_oficio);
                             $("#pdf_tarjeta").removeClass('disabled');
-                            $("#pdf_tarjeta").attr("href", "{{ route('veroficio', ':id') }}".replace(':id', titulo));
-                            } else {
+                            $("#pdf_tarjeta").attr("href", "{{ route('veroficio', ':id') }}".replace(
+                                ':id', titulo));
+                        } else {
                             $("#pdf_tarjeta").addClass('disabled');
                         }
                     }
