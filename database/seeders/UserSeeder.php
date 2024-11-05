@@ -27,6 +27,9 @@ class UserSeeder extends Seeder
             'remember_token' => null,
             'created_at' => now(),
             'updated_at' => now(),
+            'id_area' => '13',
+            'nombre_p_mostrar' => 'Admin'
+
         ]);
     }
 }
