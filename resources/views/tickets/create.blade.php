@@ -19,30 +19,30 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row mb-3">
-                            <div class="col-md-2">
+                            <div class="col-md-6 col-lg-2 mb-md-3">
                                 <label for="title" class="form-label">Tarjeta Informativa</label>
-                                <select class="form-select" id="title" name="title">
+                                <select class="form-select" id="title" name="title" style="width: 100%;">
                                     <option selected value=""> Seleccione una tarjeta </option>
                                     @foreach ($tarjetas as $tarjeta)
                                         <option value="{{ $tarjeta->no_oficio }}">{{ $tarjeta->no_oficio }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3 col-lg-2">
                                 <label class="form-label">Fecha de solicitud</label>
                                 <input type="date" class="form-control" name="fecha_registro" id="fecha_registro"
                                     value="" required>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3 col-lg-2">
                                 <label for="area" class="form-label">Área</label>
-                                <select class="form-select" id="id_area" name="id_area">
+                                <select class="form-select" id="id_area" name="id_area" style="width: 100%;">
                                     <option selected value=""> Seleccione un Área </option>
                                     @foreach ($areasCB as $area)
                                         <option value="{{ $area->id_area }}">{{ $area->area }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-6 col-lg-2">
                                 <label for="origen" class="form-label">Origen de solicitud</label>
                                 <select class="form-select" id="origen" name="origen">
                                     <option selected value="">Seleccione una opción</option>
@@ -52,7 +52,7 @@
                                     <option value="Spark">Spark</option>
                                 </select>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6 col-lg-4">
                                 <label class="form-label">Quien solicita</label>
                                 <select class="form-select" id="solicita" name="solicita" style="width: 100%;">
                                     <option value=""></option>
@@ -61,9 +61,9 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label for="servicio" class="form-label">Servicio</label>
-                                <select class="form-select" id="id_servicio" name="id_servicio">
+                                <select class="form-select" id="id_servicio" name="id_servicio" style="width: 100%;">
                                     <option selected value=""> Seleccione una servicio</option>
                                     @foreach ($servicioCB as $servicio)
                                         <option value="{{ $servicio->id_servicio }}">{{ $servicio->servicio }}</option>
@@ -79,7 +79,7 @@
                                     <option value="BAJA">BAJA</option>
                                 </select>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label class="form-label">Fecha aproximada de atención</label>
                                 <input type="date" class="form-control" name="fecha_aprox" id="fecha_aprox"
                                     value="">
@@ -148,6 +148,15 @@
     <script>
         $('#solicita').select2({
             placeholder: "Seleccionar persona",
+        });
+        $('#id_area').select2({
+            placeholder: "Seleccionar área",
+        });
+        $('#title').select2({
+            placeholder: "Seleccionar tarjeta",
+        });
+        $('#id_servicio').select2({
+            placeholder: "Seleccionar servicio",
         });
 
         @if (session('error'))
