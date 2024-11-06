@@ -41,6 +41,41 @@ class PersonalSeeder2 extends Seeder
             'updated_at' => now(),
         ]);
 
+        DB::table('personal')->insert([
+            'id_area' => 1,
+            'nombre' => 'ABRAHAM GUERRERO',
+            'nombre_p_mostrar' => 'ABRAHAM GUERRERO',
+            'puesto' => 'ADMINISTRATIVO',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('personal')->insert([
+            'id_area' => 1,
+            'nombre' => 'LUIS WALLE',
+            'nombre_p_mostrar' => 'LUIS WALLE',
+            'puesto' => 'ADMINISTRATIVO',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('personal')->insert([
+            'id_area' => 1,
+            'nombre' => 'LUIS GERARDO WALLE',
+            'nombre_p_mostrar' => 'LUIS GERARDO WALLE',
+            'puesto' => 'ADMINISTRATIVO',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('personal')->insert([
+            'id_area' => 1,
+            'nombre' => 'MARIELA SANCHEZ',
+            'nombre_p_mostrar' => 'MARIELA SANCHEZ',
+            'puesto' => 'ADMINISTRATIVO',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
 
 
     }
