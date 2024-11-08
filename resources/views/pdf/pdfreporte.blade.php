@@ -57,6 +57,7 @@
     <table>
         <thead>
             <tr>
+                <th>N°</th>
                 <th>TARJETA</th>
                 <th>DESCRIPCIÓN</th>
                 <th>SOLICITA</th>
@@ -67,6 +68,7 @@
         <tbody>
             @foreach($datos as $dato)
                 <tr>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $dato->title }}</td>
                     <td>{{ $dato->description }}</td>
                     <td>{{ $dato->solicita }}</td>
