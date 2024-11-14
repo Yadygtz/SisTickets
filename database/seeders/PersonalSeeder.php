@@ -353,30 +353,7 @@ class PersonalSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        DB::table('personal')->insert([
-            'id_area' => 3,
-            'nombre' => 'LAURA IVETTE CASTILLO DIAZ',
-            'nombre_p_mostrar' => 'LIC. CASTILLO DIAZ',
-            'puesto' => 'ARCHIVO',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table('personal')->insert([
-            'id_area' => 3,
-            'nombre' => 'DIANA EDITH ARRIAGA HERNANDEZ',
-            'nombre_p_mostrar' => 'LIC. DIANA ARRIAGA',
-            'puesto' => 'ARCHIVO',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table('personal')->insert([
-            'id_area' => 3,
-            'nombre' => 'DIANA EDITH ARRIAGA HERNANDEZ',
-            'nombre_p_mostrar' => 'LIC. DIANA ARRIAGA',
-            'puesto' => 'ARCHIVO',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+
         DB::table('personal')->insert([
             'id_area' => 3,
             'nombre' => 'LAURA IVETTE CASTILLO DIAZ',

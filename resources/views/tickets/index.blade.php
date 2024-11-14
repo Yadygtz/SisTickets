@@ -21,24 +21,24 @@
                         <label for="filtro_estatus" class="form-label">Estado</label>
                         <select class="form-select" id="filtro_estatus" name="filtro_estatus">
                             <option selected value="">Todos</option>
-                            <option value="Abierto">Abierto</option>
-                            <option value="En progreso">En progreso</option>
-                            <option value="Cerrado">Cerrado</option>
+                            <option value="ABIERTO">Abierto</option>
+                            <option value="EN PROGRESO">En progreso</option>
+                            <option value="CERRADO">Cerrado</option>
                         </select>
                     </div>
                 </div>
                 <div class="table-responsive p-0">
-                    <table class="table align items-center pb-0 mt-1" id="DStabla">
+                    <table class="table pb-0 mt-1" id="DStabla">
                         <thead>
                             <tr>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">ID</th>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Tarjeta</th>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Servicio</th>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Area</th>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Estado</th>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Prioridad</th>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Atiende</th>
-                                <th class="text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Acciones</th>
+                                <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">ID</th>
+                                <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Tarjeta</th>
+                                <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Servicio</th>
+                                <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Area</th>
+                                <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Estado</th>
+                                <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7 text-center">Prioridad</th>
+                                <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Atiende</th>
+                                <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Acciones</th>
                             </tr>
                         </thead>
                     </table>
@@ -121,7 +121,26 @@
                     "data": "estatus"
                 },
                 {
-                    "data": "prioridad"
+                    "data": "prioridad",
+                    "render": function(data, type, row) {
+                    // Dependiendo del valor de 'prioridad', asignamos un badge con color
+                    var badgeClass = '';
+                    var badgeText = '';
+
+                    if (data === 'ALTA') {
+                        badgeClass = 'bg-red ';
+                        badgeText = 'ALTA';
+                    } else if (data === 'MEDIA') {
+                        badgeClass = 'bg-yellow';
+                        badgeText = 'MEDIA';
+                    } else if (data === 'BAJA') {
+                        badgeClass = 'bg-green';
+                        badgeText = 'BAJA';
+                    }
+
+                    // Devolver el badge HTML con el color correspondiente
+                    return `<h4 class= "mb-0"><span class="badge rounded-pill text-white w-50 ${badgeClass}">${badgeText}</span></h4>`;
+                    }
                 },
                 {
                     "data": "nombre_p_mostrar"
@@ -164,8 +183,12 @@
             "autoWidth": false,
             "columnDefs": [{
                     "targets": "_all",
-                    "className": "fs-5 font-weight-bold align-middle"
-                },
+                    "className": "fs-5 font-weight-bold align-middle text-nowrap"
+                },{
+                    "targets": 5,
+                    "className": "text-center"
+
+                }
 
             ],
             "order": [

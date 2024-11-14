@@ -35,7 +35,7 @@
                             </div>
                             <div class="col-md-3 col-lg-2">
                                 <label for="area" class="form-label">Área</label>
-                                <select class="form-select" id="id_area" name="id_area" style="width: 100%;">
+                                <select class="form-select" id="id_area" name="id_area" style="width: 100%;" required>
                                     <option selected value=""> Seleccione un Área </option>
                                     @foreach ($areasCB as $area)
                                         <option value="{{ $area->id_area }}">{{ $area->area }}</option>
@@ -44,7 +44,7 @@
                             </div>
                             <div class="col-md-6 col-lg-2">
                                 <label for="origen" class="form-label">Origen de solicitud</label>
-                                <select class="form-select" id="origen" name="origen">
+                                <select class="form-select" id="origen" name="origen" required>
                                     <option selected value="">Seleccione una opción</option>
                                     <option value="Personal">Personal</option>
                                     <option value="Llamada">Llamada</option>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-md-6 col-lg-4">
                                 <label class="form-label">Quien solicita</label>
-                                <select class="form-select" id="solicita" name="solicita" style="width: 100%;">
+                                <select class="form-select" id="solicita" name="solicita" style="width: 100%;" required>
                                     <option value=""></option>
 
                                 </select>
@@ -63,7 +63,7 @@
                         <div class="row mb-3">
                             <div class="col-md-5">
                                 <label for="servicio" class="form-label">Servicio</label>
-                                <select class="form-select" id="id_servicio" name="id_servicio" style="width: 100%;">
+                                <select class="form-select" id="id_servicio" name="id_servicio" style="width: 100%;" required>
                                     <option selected value=""> Seleccione una servicio</option>
                                     @foreach ($servicioCB as $servicio)
                                         <option value="{{ $servicio->id_servicio }}">{{ $servicio->servicio }}</option>
@@ -72,7 +72,7 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="prioridad" class="form-label">Prioridad</label>
-                                <select class="form-select" id="prioridad" name="prioridad">
+                                <select class="form-select" id="prioridad" name="prioridad" required>
                                     <option selected value=""> Seleccione una prioridad </option>
                                     <option value="ALTA">ALTA</option>
                                     <option value="MEDIA">MEDIA</option>
@@ -81,8 +81,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Fecha aproximada de atención</label>
-                                <input type="date" class="form-control" name="fecha_aprox" id="fecha_aprox"
-                                    value="">
+                                <input type="date" class="form-control" name="fecha_aprox" id="fecha_aprox" value="" required>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -100,7 +99,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="asignado" class="form-label">Quien atiende</label>
-                                <select class="form-select" id="id_personal" name="id_personal">
+                                <select class="form-select" id="id_personal" name="id_personal" required>
                                     <option selected value=""> Seleccione una opción </option>
                                     @foreach ($usuarioCB as $usuario)
                                         <option value="{{ $usuario->id }}">{{ $usuario->nombre_p_mostrar }}</option>
@@ -109,7 +108,7 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="estatus" class="form-label">Estado</label>
-                                <select class="form-select" id="estatus" name="estatus">
+                                <select class="form-select" id="estatus" name="estatus" required>
                                     <option selected value=""> Seleccione una opción </option>
                                     <option value="ABIERTO">ABIERTO</option>
                                     <option value="EN PROGRESO">EN PROGRESO</option>

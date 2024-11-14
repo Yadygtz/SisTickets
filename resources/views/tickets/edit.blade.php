@@ -66,9 +66,9 @@
             <div class="col-md-3">
                 <label for="prioridad" class="form-label">Prioridad</label>
                 <select class="form-select" id="prioridad" name="prioridad">
-                    <option value="Alta" {{ $ticket->prioridad == 'Alta' ? 'selected' : '' }}>ALTA</option>
-                    <option value="Media" {{ $ticket->prioridad == 'Media' ? 'selected' : '' }}>MEDIA</option>
-                    <option value="Baja" {{ $ticket->prioridad == 'Baja' ? 'selected' : '' }}>BAJA</option>
+                    <option value="ALTA" {{ $ticket->prioridad == 'ALTA' ? 'selected' : '' }}>ALTA</option>
+                    <option value="MEDIA" {{ $ticket->prioridad == 'MEDIA' ? 'selected' : '' }}>MEDIA</option>
+                    <option value="BAJA" {{ $ticket->prioridad == 'BAJA' ? 'selected' : '' }}>BAJA</option>
                 </select>
             </div>
             <div class="col-md-3">
