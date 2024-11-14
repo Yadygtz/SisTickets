@@ -60,7 +60,7 @@ class TicketController extends Controller
     {
         $areasCB = Area::select('id_area','area')->get();
         $servicioCB = Servicio::select('id_servicio','servicio')->get();
-        $usuarioCB = User::select('id','nombre_p_mostrar')->get();
+        $usuarioCB = User::select('id','nombre_p_mostrar')->where('nombre_p_mostrar','!=','')->get();
         $personalCB = Personal::select('nombre')->get();
         $fechaActual = Carbon::now()->format('Y-m-d');
         //dd($fechaActual);
