@@ -175,7 +175,7 @@ class TicketController extends Controller
             'id_area'=>$request->id_area,
             'fecha_registro'=>$request->fecha_registro,
             'fecha_aprox'=>$request->fecha_aprox,
-            'fecha_termino'=>$request->fecha_termino,
+            'fecha_termino'=>$request->estatus == 'CERRADO' ? Carbon::now()->format('Y-m-d'): Null,
             'solicita'=>$request->solicita,
             'origen'=>$request->origen,
             'user_id' => auth()->user()->id, // Puedes actualizar el user_id si es necesario
