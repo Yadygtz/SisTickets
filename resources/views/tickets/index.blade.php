@@ -26,6 +26,19 @@
                             <option value="CERRADO">Cerrado</option>
                         </select>
                     </div>
+                    <div class="col-md-3">
+                        <label for="filtro_fecha" class="form-label">Fecha Creado</label>
+                        <input type="date" class="form-control" name="filtro_fecha" id="filtro_fecha" value="" required>
+                    </div>
+                    <div class="col-md-3 col-lg-2">
+                        <label for="filtro_area" class="form-label">Área</label>
+                        <select class="form-select" id="filtro_area" name="filtro_area" style="width: 100%;" required>
+                            <option selected value=""> Seleccione un Área </option>
+                            @foreach ($areasCB as $area)
+                                <option value="{{ $area->id_area }}">{{ $area->area }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <div class="table-responsive p-0">
                     <table class="table pb-0 mt-1" id="DStabla">
@@ -33,6 +46,7 @@
                             <tr>
                                 <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">ID</th>
                                 <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Tarjeta</th>
+                                <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Fecha Ticket</th>
                                 <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Servicio</th>
                                 <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Area</th>
                                 <th class="text-nowrap text-uppercase text-secondary fs-6 font-weight-bolder opacity-7">Estado</th>
@@ -110,6 +124,9 @@
                 },
                 {
                     "data": "title"
+                },
+                {
+                    "data": "fecha_registro"
                 },
                 {
                     "data": "servicio"
@@ -198,11 +215,19 @@
         });
 
         $("#filtro_estatus").on('change', function() {
-
             estatus = $(this).val();
-            $('#DStabla tbody tr').filter(function() {
-            $(this).toggle($(this).find('td:eq(4)').text() === estatus || estatus === "");
+            table.column(5).search(estatus).draw();
         });
+
+        $("#filtro_fecha").on('change', function() {
+        fecha = $(this).val();
+        table.column(2).search(fecha).draw();
         });
+
+        $("#filtro_area").on('change', function() {
+        area = $("#filtro_area option:selected").text();
+        table.column(4).search(area).draw();
+        });
+
     </script>
 @endpush

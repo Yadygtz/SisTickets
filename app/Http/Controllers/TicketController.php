@@ -17,7 +17,8 @@ class TicketController extends Controller
 {
     public function index()
     {
-        return view('tickets.index');
+        $areasCB = Area::select('id_area','area')->get();
+        return view('tickets.index',compact('areasCB'));
     }
 
 

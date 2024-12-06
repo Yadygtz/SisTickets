@@ -122,6 +122,18 @@
 @endsection
 @push('scripts')
     <script>
+        $('#solicita').select2({
+            placeholder: "Seleccionar persona",
+        });
+        $('#id_area').select2({
+            placeholder: "Seleccionar área",
+        });
+        $('#title').select2({
+            placeholder: "Seleccionar tarjeta",
+        });
+        $('#id_servicio').select2({
+            placeholder: "Seleccionar servicio",
+        });
         var fechaActual = "{{ $fechaActual }}";
         $("#fecha_termino").prop("disabled",true);
 
