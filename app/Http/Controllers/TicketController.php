@@ -113,7 +113,7 @@ class TicketController extends Controller
             // Crear el ticket con el user_id
             Ticket::create([
                 'title' => $request->title,
-                'description' => $request->description,
+                'description' =>mb_strtoupper($request->description),
                 'observaciones' => $request->observaciones,
                 'user_id' => auth()->user()->id,
                 'id_servicio'=>$request->id_servicio,
@@ -164,6 +164,7 @@ class TicketController extends Controller
             'description' => 'required|string',
             'estatus' => 'required|string',
         ]);
+
 
         // Actualizar el ticket
         $ticket->update([

@@ -165,6 +165,12 @@
             });
         @endif
 
+        document.getElementById('description').addEventListener('input', function() {
+        this.value = this.value.toUpperCase();
+        });
+
+
+
         $(document).ready(function() {
             $('#id_area').change(function() {
                 var areaId = $(this).val();

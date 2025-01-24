@@ -29,6 +29,13 @@ class reporte_pdf_Controller extends Controller
         $datos = Ticket::whereBetween('fecha_registro',[$fecha_ini,$fecha_fin])
         ->join('users','tickets.id_personal','=','users.id')
         ->where('estatus','Cerrado')->get();
+
+        //Convertir a mayusculas antes de mandar al pdf
+        foreach ($datos as $dato){
+            $dato->description = mb_strtoupper($dato->description);
+        }
+
+
         $fecha_ini_obj = new DateTime($fecha_ini);
         $fecha_fin_obj = new DateTime($fecha_fin);
 
