@@ -59,6 +59,7 @@
             <tr>
                 <th>N°</th>
                 <th>TARJETA</th>
+                <th>SERVICIO</th>
                 <th>DESCRIPCIÓN</th>
                 <th>SOLICITA</th>
                 <th>ATIENDE</th>
@@ -70,6 +71,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $dato->title }}</td>
+                    <td>{{ mb_strtoupper($dato->servicio) }}</td>
                     <td>{{ $dato->description }}</td>
                     <td>{{ $dato->solicita }}</td>
                     <td>{{ $dato->nombre_p_mostrar }}</td>

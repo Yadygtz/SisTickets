@@ -28,7 +28,8 @@ class reporte_pdf_Controller extends Controller
         // Obtener datos desde Eloquent
         $datos = Ticket::whereBetween('fecha_registro',[$fecha_ini,$fecha_fin])
         ->join('users','tickets.id_personal','=','users.id')
-        ->where('estatus','Cerrado')->get();
+        ->join('servicio','tickets.id_servicio','=','servicio.id_servicio')
+        ->where('estatus','Cerrado')->orderBy('servicio.servicio')->get();
 
         //Convertir a mayusculas antes de mandar al pdf
         foreach ($datos as $dato){
