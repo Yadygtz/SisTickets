@@ -166,7 +166,7 @@
                     "orderable": false,
                     "data": null,
                     "render": function(data, type) {
-                        var deshabilitado = data.estatus == 'CERRADO'?'disabled':'';
+                        var deshabilitado = data.estatus == 'CERRADO'?'enabled':'';
                         var r1 = "{{ route('tickets.show',':id') }}".replace(':id',data.id);
                         var r2 = "{{ route('tickets.edit',':id') }}".replace(':id',data.id);
                         return '<div class="d-flex"> ' +
